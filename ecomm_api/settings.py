@@ -54,8 +54,8 @@ INSTALLED_APPS = [
 #             'access_type': 'online',
 #         },
 #         'APP': {
-#             'client_id': '640698990785-8mm3mdmt6qi3mgmvmkrsmnn7aqt4l3eb.apps.googleusercontent.com',
-#             'secret': 'H5No-yPBnHQELODM5wimsvnt',
+#             'client_id': **********,
+#             'secret': **********,
 #             'key': ''
 #         }
 #     }
