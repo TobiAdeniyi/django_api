@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'y8d&=74c6oj*wawe#!sxtr+8lb@3!7pjt!(@$=gx^gb@eifs=3'
+SECRET_KEY = **********
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -128,8 +128,8 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 # Google configuration
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '640698990785-8mm3mdmt6qi3mgmvmkrsmnn7aqt4l3eb.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'H5No-yPBnHQELODM5wimsvnt'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = **********
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = **********
 
 # Define SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE to get extra permissions from Google.
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
