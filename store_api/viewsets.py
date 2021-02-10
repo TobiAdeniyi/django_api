@@ -8,6 +8,8 @@ from . import serializers
 # destroy() -> DELETE
 
 # ViewSets define the view behavior.
+
+
 class ProductsViewset(viewsets.ModelViewSet):
     queryset = models.Products.objects.all()
     serializer_class = serializers.ProductsSerializer

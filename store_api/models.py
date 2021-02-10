@@ -1,53 +1,78 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-## Store Products
+# Store Products
+
+
 class Products(models.Model):
     name = models.CharField(max_length=100, null=True)
     price = models.FloatField(null=True)
     weight = models.FloatField(null=True)
-    colour = models.CharField(max_length=50, null=True)
+    color = models.CharField(max_length=50, null=True)
     euler_char = models.IntegerField(null=True)
-    
+
     def __str__(self):
         return self.name
 
-## Customer
+    @property
+    def get_item_by_weight(self):
+        items_by_weight = self.order_by('weight')
+        return items_by_weight
+
+    @property
+    def get_item_by_color(self):
+        items_by_color = self.order_by('color')
+        return items_by_color
+
+    @property
+    def get_item_by_euler_char(self):
+        items_by_euler_char = self.order_by('euler_char')
+        return items_by_euler_char
+
+
+# Customer
 class Customer(models.Model):
-    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        User, null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200)
-    
+
     def __str__(self):
         return self.name
 
-## Order Model
+# Order Model
+
+
 class Order(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
+    customer = models.ForeignKey(
+        Customer, on_delete=models.SET_NULL, null=True, blank=True)
     complete = models.BooleanField(default=False)
-    
+
     def __str__(self):
         return str(self.id)
-    
+
     @property
     def get_cart_total(self):
         orderitems = self.orderitem_set.all()
         total = sum([item.get_total for item in orderitems])
-        return total 
-    
+        return total
+
     @property
     def get_cart_items(self):
         orderitems = self.orderitem_set.all()
         total = sum([item.quantity for item in orderitems])
-        return total 
+        return total
 
-## Customers Order
+# Customers Order
+
+
 class OrderItem(models.Model):
     product = models.ForeignKey(Products, on_delete=models.SET_NULL, null=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     quantity = models.IntegerField(default=0, null=True, blank=True)
     # price of basket
-    @property 
+
+    @property
     def get_total(self):
         total = self.product.price * self.quantity
         return total
